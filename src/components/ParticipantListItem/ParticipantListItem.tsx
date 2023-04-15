@@ -21,7 +21,7 @@ export const ParticipantListItem = ({
     onChanges({
       id: id,
       name: name,
-      avatar: avatarsList[selectedAvatarIndex]?.imageUrl,
+      avatarId: avatarsList[selectedAvatarIndex]?.id,
     });
   }, [avatarsList, selectedAvatarIndex, name]);
   return (
@@ -35,18 +35,26 @@ export const ParticipantListItem = ({
                 alt=''
                 className='participant-list-item__selected-avatar'
               />
-              <TextField
-                label={`Участник ${number}`}
-                variant='standard'
-                onChange={(event) => {
-                  setName(event.currentTarget.value);
-                }}
-              ></TextField>
+              <div className='participant-list-item__names'>
+                <TextField
+                  label={`Участник ${number}`}
+                  variant='standard'
+                  onChange={(event) => {
+                    setName(event.currentTarget.value);
+                  }}
+                ></TextField>
+                {avatarsList.length && (
+                  <p className='participant-list-item__avatar-description'>
+                    {avatarsList[selectedAvatarIndex]?.description}
+                  </p>
+                )}
+              </div>
             </div>
             <IconButton onClick={onDelete(id)}>
               <DeleteIcon></DeleteIcon>
             </IconButton>
           </div>
+
           <div className='participant-list-item__avatar-selection'>
             {avatarsList.map((avatar, index) => (
               <IconButton

@@ -5,6 +5,7 @@
   border-radius: 4px;
   background-color: $surface;
   border: $outline;
+  color: $on-background;
 
   &__selected-avatar {
     width: 80px;
@@ -23,6 +24,7 @@
     @media (max-width: 400px) {
       flex-direction: column;
       align-items: flex-start;
+      gap: 10px;
     }
   }
 
@@ -35,7 +37,11 @@
 
   &__avatar-selection {
     display: flex;
-    margin-top: 20px;
+    margin-top: 10px;
     flex-wrap: wrap;
+  }
+
+  &__avatar-description {
+    margin-top: 10px;
   }
 }

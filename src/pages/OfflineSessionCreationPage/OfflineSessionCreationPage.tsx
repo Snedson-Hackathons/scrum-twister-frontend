@@ -5,22 +5,22 @@ import { Button } from '@mui/material';
 import { useState, useEffect, useCallback } from 'react';
 import { IParticipantModel } from '../../types/Participants.types';
 import { API } from '../../api/API';
-import { IAvatar } from '../../api/API.types';
+import { IAvatar, IParticipantDTO } from '../../api/API.types';
 import { v4 } from 'uuid';
 
 export const OfflineSessionCreationPage = observer(() => {
-  const [participantList, setParticipantList] = useState<IParticipantModel[]>(
+  const [participantsList, setParticipantsList] = useState<IParticipantModel[]>(
     []
   );
   const [avatarsList, setAvatarsList] = useState<IAvatar[]>([]);
 
   const createParticicpant = useCallback(() => {
-    setParticipantList((prev) => [
+    setParticipantsList((prev) => [
       ...prev,
       {
         id: v4(),
         name: '',
-        avatar: avatarsList[0].imageUrl,
+        avatarId: avatarsList[0].id,
       },
     ]);
   }, [avatarsList]);
@@ -28,13 +28,20 @@ export const OfflineSessionCreationPage = observer(() => {
   const deleteParticipant = useCallback(
     (id: string) => {
       return () => {
-        setParticipantList((prev) =>
+        setParticipantsList((prev) =>
           prev.filter((participant) => id !== participant.id)
         );
       };
     },
     [avatarsList]
   );
+
+  const startNewSession = useCallback(() => {
+    API.startNewSession({
+      participants: participantsList as IParticipantDTO[],
+      isOnline: false,
+    });
+  }, [participantsList]);
 
   useEffect(() => {
     API.getAvatarsList().then((data) => {
@@ -47,21 +54,21 @@ export const OfflineSessionCreationPage = observer(() => {
         <h1 className='offline-session-creation-page__heading'>
           Добавьте участников в сессию
         </h1>
-        {!participantList.length && (
+        {!participantsList.length && (
           <p className='offline-session-creation-page__offer'>
             Добавьте участников
           </p>
         )}
-        {!!participantList.length && (
+        {!!participantsList.length && (
           <div className='offline-session-creation-page__participant-list'>
-            {participantList.map((participant, index) => {
+            {participantsList.map((participant, index) => {
               return (
                 <ParticipantListItem
                   id={participant.id}
                   number={index + 1}
                   avatarsList={avatarsList}
                   onChanges={(participant) => {
-                    setParticipantList((prevState) =>
+                    setParticipantsList((prevState) =>
                       prevState.map((p) => {
                         if (p.id === participant.id) {
                           return participant;
@@ -79,7 +86,7 @@ export const OfflineSessionCreationPage = observer(() => {
         )}
         <div className='offline-session-creation-page__actions'>
           <Button onClick={createParticicpant}>Добавить участника</Button>
-          <Button>Стартуем!</Button>
+          <Button onClick={startNewSession}>Стартуем!</Button>
         </div>
       </div>
     </div>
