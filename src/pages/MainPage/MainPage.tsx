@@ -13,6 +13,7 @@ import snedsonLogo from '../../assets/images/logos/snedson-centered.png';
 import crossIcon from '../../assets/images/icons/cross.svg';
 import sberLogo from '../../assets/images/logos/sber-logo.svg';
 import sendIcon from '../../assets/images/icons/send.svg';
+import SendIcon from '@mui/icons-material/Send';
 import { Link } from 'react-router-dom';
 
 export const MainPage = observer(() => {
@@ -50,18 +51,18 @@ export const MainPage = observer(() => {
                   <h3 className='card__title'>Участник команды?</h3>
                   <p className='card__offer'>Присоединиться к сессии!</p>
                 </div>
-                <div
-                  className='card__actions'
-                  style={{ alignItems: 'flex-end' }}
-                >
+                <div className='card__actions'>
                   <TextField
                     variant='outlined'
                     label='Код сессии'
                     sx={{ width: '100%' }}
                   ></TextField>
-                  <Button variant='contained' sx={{ height: '100%' }}>
+                  {/* <Button variant='contained' sx={{ height: '100%' }}>
                     <img src={sendIcon} alt='' />
-                  </Button>
+                  </Button> */}
+                  <IconButton>
+                    <SendIcon></SendIcon>
+                  </IconButton>
                 </div>
               </div>
             </div>

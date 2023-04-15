@@ -1,7 +1,9 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable } from 'mobx';
 
-export class RootStore {
+class RootStore {
   constructor() {
     makeAutoObservable(this);
   }
 }
+
+export default new RootStore();
