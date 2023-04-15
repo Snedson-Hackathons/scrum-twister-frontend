@@ -1,0 +1,14 @@
+@import '../../design-tokens/variables';
+.offline-session-creation-page {
+  &__content {
+    padding: 40px 50px 0 50px;
+  }
+
+  &__heading {
+    color: $on-background;
+  }
+
+  &__participant-list {
+    margin-top: 80px;
+  }
+}

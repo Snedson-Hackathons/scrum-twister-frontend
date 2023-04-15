@@ -1,0 +1,15 @@
+$primary: #bb86fc;
+$primary-variant: #3700b3;
+$secondary: #03dac5;
+$background: #121212;
+$surface: #121212;
+$error: #cf6679;
+$on-primary: #000;
+$on-secondary: #000;
+$on-background: rgba(255, 255, 255, 0.87);
+
+$outline: 1px solid rgba(255, 255, 255, 0.12);
+
+$mobile-page-right-left-padding: 8px;
+$max-mobile-width: 1050px;
+$min-mobile-width: calc(280px - 2 * $mobile-page-right-left-padding);

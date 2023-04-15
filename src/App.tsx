@@ -1,10 +1,23 @@
-import React from "react";
+import React from 'react';
+import './App.scss';
+import { Container } from '@mui/material';
+import { Router } from './Router';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
-import "./App.scss";
-import { Container } from "@mui/material";
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <ThemeProvider theme={darkTheme}>
+      <div className='App'>
+        <Router></Router>
+      </div>
+    </ThemeProvider>
+  );
 }
 
 export default App;

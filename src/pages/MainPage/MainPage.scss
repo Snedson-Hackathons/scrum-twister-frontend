@@ -1,0 +1,102 @@
+@import '../../design-tokens/variables';
+
+.main-page {
+  &__content {
+    display: flex;
+    flex-direction: row;
+    padding: 200px 100px 0 100px;
+
+    @media (max-width: $max-mobile-width) {
+      flex-direction: column;
+      padding: 8px $mobile-page-right-left-padding 0
+        $mobile-page-right-left-padding;
+    }
+  }
+
+  &__part {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+
+    @media (max-width: $max-mobile-width) {
+      align-items: center;
+      min-width: $min-mobile-width;
+    }
+  }
+
+  &__hello {
+    @media (max-width: $max-mobile-width) {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+}
+
+.cards {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 40px;
+  @media (max-width: $max-mobile-width) {
+    align-items: center;
+  }
+}
+
+.card {
+  height: 200px;
+  max-width: 400px;
+  min-width: $min-mobile-width;
+  width: 100%;
+  background: $surface;
+  border-radius: 4px;
+  border: $outline;
+  padding: 18px;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  &__title {
+    color: $on-background;
+    font-size: 24px;
+  }
+
+  &__offer {
+    margin-top: 15px;
+    color: $on-background;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+}
+
+.logos {
+  padding: 0;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  &__logo {
+    height: 49px;
+    width: 49px;
+    border-radius: 10px;
+    resize: horizontal;
+  }
+}
+
+.hello {
+  @media (max-width: $max-mobile-width) {
+    max-width: 100%;
+    height: auto;
+    min-width: $min-mobile-width;
+  }
+}
