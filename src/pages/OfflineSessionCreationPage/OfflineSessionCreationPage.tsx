@@ -7,12 +7,14 @@ import { IParticipantModel } from '../../types/Participants.types';
 import { API } from '../../api/API';
 import { IAvatar, IParticipantDTO } from '../../api/API.types';
 import { v4 } from 'uuid';
+import { useNavigate } from 'react-router';
 
 export const OfflineSessionCreationPage = observer(() => {
   const [participantsList, setParticipantsList] = useState<IParticipantModel[]>(
     []
   );
   const [avatarsList, setAvatarsList] = useState<IAvatar[]>([]);
+  const navigate = useNavigate();
 
   const createParticicpant = useCallback(() => {
     setParticipantsList((prev) => [
@@ -40,7 +42,16 @@ export const OfflineSessionCreationPage = observer(() => {
     API.startNewSession({
       participants: participantsList as IParticipantDTO[],
       isOnline: false,
-    });
+    })
+      .then((data) => {
+        navigate(
+          `/activity?sessionId=${data.sessionId}&inviteCode=${data.inviteCode}`
+        );
+      })
+      .catch((err) => {
+        navigate('/');
+        throw new Error(err);
+      });
   }, [participantsList]);
 
   useEffect(() => {

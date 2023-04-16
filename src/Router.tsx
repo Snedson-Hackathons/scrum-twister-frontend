@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { MainPage } from './pages/MainPage/MainPage';
 import { OfflineSessionCreationPage } from './pages/OfflineSessionCreationPage/OfflineSessionCreationPage';
+import { ActivityPage } from './pages/ActivityPage/ActivityPage';
 
 export const Router = () => {
   return (
@@ -10,6 +11,7 @@ export const Router = () => {
         path='/session'
         element={<OfflineSessionCreationPage></OfflineSessionCreationPage>}
       ></Route>
+      <Route path='/activity' element={<ActivityPage></ActivityPage>}></Route>
     </Routes>
   );
 };

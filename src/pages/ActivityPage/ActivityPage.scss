@@ -1,0 +1,117 @@
+@import '../../design-tokens/variables';
+
+.activity-page {
+  padding: 50px;
+  color: $on-background;
+  padding-bottom: 40px;
+  min-height: 100%;
+
+  @media (max-width: 1050px) {
+    padding: 8px;
+  }
+
+  &__content {
+    display: flex;
+    gap: 10px;
+    min-height: 100vh;
+    @media (max-width: 1440px) {
+      flex-direction: column;
+    }
+  }
+
+  &__left-part {
+    border: $outline;
+    border-radius: 10px;
+  }
+
+  &__right-part {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__current-participant {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 21px;
+    .text {
+      color: #b8b8b8;
+    }
+    padding: 34px 30px;
+  }
+
+  &__curr-part-image {
+    max-width: 236px;
+    max-height: 236px;
+    border-radius: 100%;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__names {
+    text-align: center;
+  }
+
+  &__activity-title {
+    font-weight: 600;
+    font-size: 50px;
+    @media (max-width: 400px) {
+      font-size: 32px;
+    }
+  }
+
+  &__activity-subtitle {
+    font-weight: 400;
+    font-size: 28px;
+    color: #b8b8b8;
+  }
+
+  &__cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    width: 100%;
+    height: 100%;
+    @media (max-width: 1440px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+
+  &__card {
+    border: $outline;
+    border-radius: 10px;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  &__activity-text {
+    color: $on-background;
+    font-size: 50px;
+    font-weight: 400;
+    margin-top: 40px;
+    @media (max-width: 400px) {
+      font-size: 32px;
+    }
+  }
+
+  &__activity-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__card-title {
+    margin-top: 10px;
+    font-size: 24px;
+  }
+
+  &__card-image {
+    width: 100px;
+  }
+}

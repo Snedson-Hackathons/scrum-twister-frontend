@@ -1,10 +1,9 @@
 @import './design-tokens/variables';
 
 .App {
-  background: $background;
-  min-height: 100vh;
-  min-width: 100vw;
-  padding-bottom: 40px;
+  height: 100%;
+  // min-width: 100vw;
+  // padding-bottom: 40px;
 
   font-family: 'Roboto', sans-serif;
 }
